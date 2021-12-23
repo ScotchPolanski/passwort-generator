@@ -34,8 +34,8 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
         passwortAusgabeTextField = new javax.swing.JTextField();
         generierenButton = new javax.swing.JButton();
         kopierenButton = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        warnungCheckbox = new javax.swing.JCheckBox();
+        schliessenButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Passwortgenerator by Scotch#5627");
@@ -76,12 +76,12 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setText("Warnung bei Zeichenlänge ab 250");
+        warnungCheckbox.setText("Warnung bei Zeichenlänge ab 250");
 
-        jButton1.setText("Exit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        schliessenButton.setText("Exit");
+        schliessenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                schliessenButtonActionPerformed(evt);
             }
         });
 
@@ -95,7 +95,7 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(zeichenanzahlLabel)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(schliessenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -111,7 +111,7 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
                                 .addComponent(kopierenButton)
                                 .addGap(3, 3, 3))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
+                        .addComponent(warnungCheckbox)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -133,7 +133,7 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
                     .addComponent(zeichenanzahlLabel)
                     .addComponent(zeichenanzahlTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(jCheckBox1)
+                .addComponent(warnungCheckbox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(generierenButton)
                 .addGap(18, 18, 18)
@@ -142,7 +142,7 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwortAusgabeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kopierenButton)
-                    .addComponent(jButton1))
+                    .addComponent(schliessenButton))
                 .addGap(15, 15, 15))
         );
 
@@ -164,7 +164,7 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
     }
 
     public void passwortgenerieren(int anzahl) {
-        if (anzahl >= 250 && jCheckBox1.isSelected()) {
+        if (anzahl >= 250 && warnungCheckbox.isSelected()) {
             int box = JOptionPane.showConfirmDialog(null, "Die Zeichenanzahl ist sehr hoch (" + anzahl + ")\nSicher, dass das Passwort generiert werden soll?", "WARNUNG", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
             if (box == 0) {
                 passwort(anzahl);
@@ -193,9 +193,12 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Erfolgreich in die Zwischenablage kopiert.", "ERFOLGREICH", INFORMATION_MESSAGE);
     }//GEN-LAST:event_kopierenButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.exit(0); // Schließt Programm
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void schliessenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schliessenButtonActionPerformed
+        int ergebnisExitBox = JOptionPane.showConfirmDialog(null, "Sicher, dass Sie das Programm schließen wollen?", "WARNUNG", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (ergebnisExitBox == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_schliessenButtonActionPerformed
 
     private void zeichenanzahlTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_zeichenanzahlTextFieldKeyTyped
         // Nur Zahlen als Eingabe
@@ -233,12 +236,12 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton generierenButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JButton kopierenButton;
     private javax.swing.JTextField passwortAusgabeTextField;
     private javax.swing.JLabel passwortLabel;
+    private javax.swing.JButton schliessenButton;
     private javax.swing.JLabel ueberschriftLabel;
+    private javax.swing.JCheckBox warnungCheckbox;
     private javax.swing.JLabel zeichenanzahlLabel;
     private javax.swing.JTextField zeichenanzahlTextField;
     // End of variables declaration//GEN-END:variables
