@@ -154,13 +154,12 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
     }//GEN-LAST:event_zeichenanzahlTextFieldActionPerformed
 
     public void passwort(int anzahl) {
-        String[] strArr = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", ".", "#", "+", "&", "$", "€", "§", ")", "(", ","}; // Sonderzeichen unvollständig
-        Random rand = new Random();
-        for (int i = 0; i < anzahl; i++) {
+        String[] strArr = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", ".", "#", "+", "&", "$", "€", "§", ")", "(", ","}; // Array mit verwendeten Zeichen; Sonderzeichen unvollständig
+        Random rand = new Random(); // Objekt erzeugen
+        for (int i = 0; i < anzahl; i++) { // Schleife für Durchlauf
             int arrayStelle = rand.nextInt(strArr.length);
-            //System.out.print(strArr[arrayStelle]);
-            String sichern = passwortAusgabeTextField.getText();
-            passwortAusgabeTextField.setText(sichern + strArr[arrayStelle]);
+            String sichern = passwortAusgabeTextField.getText(); // um das Zeichen "anzufügen"
+            passwortAusgabeTextField.setText(sichern + strArr[arrayStelle]); // zeigt Passwort
         }
     }
 
@@ -186,6 +185,7 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
     }//GEN-LAST:event_generierenButtonActionPerformed
 
     private void kopierenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kopierenButtonActionPerformed
+        // Kopiert Passwort in die Zwischenablage
         String passwort = passwortAusgabeTextField.getText();
         StringSelection stringSelection = new StringSelection(passwort);
         Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -194,10 +194,11 @@ public class passwortgeneratorGui extends javax.swing.JFrame {
     }//GEN-LAST:event_kopierenButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.exit(0);
+        System.exit(0); // Schließt Programm
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void zeichenanzahlTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_zeichenanzahlTextFieldKeyTyped
+        // Nur Zahlen als Eingabe
         char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
             getToolkit().beep();
